@@ -2,24 +2,25 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   width: 100%;
-  max-width: 750px;
+  max-width: 46.875rem;
   margin: auto;
   display: flex;
-  padding: 50px 0;
+  padding: 3.125rem 0;
 
   @media (max-width: 750px) {
     flex-direction: column;
   };
 `;
 
-export const Infos = styled.div`
+export const InfosArea = styled.div`
   display: flex;
   flex-direction: column;
   width: auto;
 
   @media (max-width: 750px) {
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
     align-items: center;
   };
 `;
@@ -30,7 +31,7 @@ export const Logo = styled.a`
 
 export const Data = styled.div`
   width: 100%;
-  margin: 10px 0;
+  margin: .6rem 0;
 
   @media (max-width: 750px) {
     display: flex;
@@ -46,6 +47,6 @@ export const CardsArea = styled.div`
 
   @media (max-width: 750px) {
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 1.3rem;
   };
 `;
