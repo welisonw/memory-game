@@ -50,3 +50,10 @@ export const CardsArea = styled.div`
     margin: 0 1.3rem;
   };
 `;
+
+export const Cards = styled.div`
+  width: 26.875rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .625rem;
+`;
