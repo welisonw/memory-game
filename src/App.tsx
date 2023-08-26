@@ -7,6 +7,7 @@ import { InfoItem } from './components/InfoItem/InfoItem';
 import restartIcon from './svg/restart.svg';
 import { GridItemType } from './types/GridItemType';
 import { cards } from './data/cards';
+import { Card } from './components/Card/Card';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     handleResetAndCreateGame();
     
   }, []);
+
 
   const handleResetAndCreateGame = () => {
     // reset game
@@ -41,12 +43,13 @@ function App() {
 
     /// fill the grid
     for(let w = 0; w < 2; w++) {
-      for(let i = 0; i < cards.length * 2; i++) {
+      for(let i = 0; i < cards.length; i++) {
         let position = -1;
 
         while (position < 0 || temporaryGrid[position].item !== null) {
-          position = Math.floor(Math.random() * (cards.length *  2));
+          position = Math.floor(Math.random() * (cards.length * 2));
         };
+
 
 
         temporaryGrid[position].item = i;
@@ -59,6 +62,11 @@ function App() {
     // start game
     setPlaying(true);
   };
+
+  const handleCardClick = (index: number) => {
+    
+  };
+
   
   return (
     <AppStyles.Container>
@@ -79,7 +87,15 @@ function App() {
 
       <AppStyles.CardsArea>
         <AppStyles.Cards>
-          ///
+          {
+            gridItems.map((card, index) => (
+              <Card 
+                key={index}
+                card={card}
+                onClick={() => handleCardClick(index)}
+              />
+            ))
+          }
         </AppStyles.Cards>
       </AppStyles.CardsArea>
     </AppStyles.Container>

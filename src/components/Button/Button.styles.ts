@@ -14,7 +14,7 @@ export const Container = styled.button`
   transition: all ease .3s;
 
   &:hover {
-    opacity: .9;
+    opacity: .8;
   }
 `;
 

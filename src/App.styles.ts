@@ -2,12 +2,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   width: 100%;
-  max-width: 46.875rem;
+  max-width: 60rem;
   margin: auto;
   display: flex;
-  padding: 3.125rem 0;
+  padding: 5rem 0;
 
   @media (max-width: 750px) {
     flex-direction: column;
@@ -52,8 +51,8 @@ export const CardsArea = styled.div`
 `;
 
 export const Cards = styled.div`
-  width: 26.875rem;
+  width: 40rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: .625rem;
+  gap: 1rem;
 `;
