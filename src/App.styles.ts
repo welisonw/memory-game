@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   padding: 5rem 0;
 
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   };
 `;
@@ -17,7 +17,7 @@ export const InfosArea = styled.div`
   flex-direction: column;
   width: auto;
 
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     margin-bottom: 3.125rem;
     align-items: center;
   };
@@ -31,7 +31,7 @@ export const Data = styled.div`
   width: 100%;
   margin: .6rem 0;
 
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -42,15 +42,16 @@ export const CardsArea = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  margin-left: 2.5rem;
 
-  @media (max-width: 750px) {
+  @media (max-width: 768px) {
     justify-content: center;
     margin: 0 1.3rem;
   };
 `;
 
 export const Cards = styled.div`
-  width: 40rem;
+  max-width: 38rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
