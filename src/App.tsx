@@ -8,6 +8,7 @@ import restartIcon from './svg/restart.svg';
 import { GridItemType } from './types/GridItemType';
 import { cards } from './data/cards';
 import { Card } from './components/Card/Card';
+import { formatTimeElapsed } from './utils/formatTimeElapsed';
 
 
 function App() {
@@ -19,9 +20,17 @@ function App() {
 
   useEffect(() => {
     handleResetAndCreateGame();
-    
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (playing) {
+        setTimeElapsed(timeElapsed => timeElapsed + 1);
+      };
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [playing, timeElapsed]);
 
   const handleResetAndCreateGame = () => {
     // reset game
@@ -50,12 +59,9 @@ function App() {
           position = Math.floor(Math.random() * (cards.length * 2));
         };
 
-
-
         temporaryGrid[position].item = i;
       };
     };
-
 
     setGridItems(temporaryGrid);
 
@@ -74,10 +80,12 @@ function App() {
         <AppStyles.Logo href=''>
           <img src={logoImg} alt='' width={200} />
         </AppStyles.Logo>
+
         <AppStyles.Data>
-          <InfoItem title='Tempo' value='00:00' />
+          <InfoItem title='Tempo' value={formatTimeElapsed(timeElapsed)} />
           <InfoItem title='Movimentos' value='0' />
         </AppStyles.Data>
+
         <Button 
           icon={restartIcon}
           title='Reiniciar'
