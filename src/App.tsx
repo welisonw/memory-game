@@ -87,6 +87,7 @@ function App() {
     setTimeElapsed(0);
     setShownCount(0);
     setMoveCount(0);
+    setFirstClick(false);
 
     // create grid
     let temporaryGrid: GridItemType[] = [];

@@ -16,7 +16,6 @@ export const Card = ({ card, onClick }: Props) => {
         !card.permanentShown && !card.shown &&
         <CardStyles.Icon src={backCard} alt='texture back card' />
       }
-
       {
         (card.permanentShown || card.shown) && card.item !== null &&
         <CardStyles.Icon src={cards[card.item]} alt='card' />
