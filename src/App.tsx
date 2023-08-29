@@ -17,6 +17,7 @@ function App() {
   const [ moveCount, setMoveCount ] = useState<number>(0);
   const [ shownCount, setShownCount ] = useState<number>(0);
   const [ gridItems, setGridItems ] = useState<GridItemType[]>([]);
+  const [firstClick, setFirstClick] = useState<boolean>(false);
 
   useEffect(() => {
     handleResetAndCreateGame();
@@ -25,13 +26,13 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (playing) {
+      if (playing && firstClick) {
         setTimeElapsed(timeElapsed => timeElapsed + 1);
       };
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [playing, timeElapsed]);
+  }, [playing, timeElapsed, firstClick]);
 
 
   useEffect(() => {
@@ -119,6 +120,11 @@ function App() {
   };
 
   const handleCardClick = (index: number) => {
+    if (!firstClick) {
+      setFirstClick(true);
+      setPlaying(true); // Inicia o jogo quando ocorre o primeiro clique
+    }
+
     if (playing && index !== null && shownCount < 2) {
       let temporaryGrid = [...gridItems];
 
@@ -129,10 +135,7 @@ function App() {
       };
 
       setGridItems(temporaryGrid);
-
     };
-
-
   };
 
   
