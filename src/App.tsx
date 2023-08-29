@@ -72,6 +72,14 @@ function App() {
   }, [shownCount, gridItems]);
 
 
+  // verify if game is over
+  useEffect(() => {
+    if (moveCount > 0 && gridItems.every(item => item.permanentShown)) {
+      setPlaying(false);
+    }
+  }, [moveCount, gridItems]);
+
+
 
   const handleResetAndCreateGame = () => {
     // reset game
@@ -137,7 +145,7 @@ function App() {
 
         <AppStyles.Data>
           <InfoItem title='Tempo' value={formatTimeElapsed(timeElapsed)} />
-          <InfoItem title='Movimentos' value='0' />
+          <InfoItem title='Movimentos' value={moveCount.toString()} />
         </AppStyles.Data>
 
         <Button 
