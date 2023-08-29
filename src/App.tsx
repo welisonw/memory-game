@@ -22,6 +22,7 @@ function App() {
     handleResetAndCreateGame();
   }, []);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (playing) {
@@ -31,6 +32,46 @@ function App() {
 
     return () => clearTimeout(timer);
   }, [playing, timeElapsed]);
+
+
+  useEffect(() => {
+    if (shownCount !== 2) return;
+  
+    const openCards = gridItems.filter(item => item.shown);
+    
+    if (openCards.length !== 2) return;
+  
+    const areCardsEqual = openCards[0].item === openCards[1].item;
+    
+    if (areCardsEqual) {  
+      // check if the open cards are the same
+      let temporaryGrid = [...gridItems];
+    
+      temporaryGrid.map(item => {
+        if (item.shown) {
+          item.permanentShown = true,
+          item.shown = false
+        };
+      });
+    
+      setGridItems(temporaryGrid);
+      setShownCount(0);
+    } else {
+      // if they are not equal, close all 'shown'
+      setTimeout(() => {
+        let resetGrid = [...gridItems];
+  
+        resetGrid.map(item => item.shown = false);
+  
+        setGridItems(resetGrid);
+        setShownCount(0);
+      }, 1100);
+    };
+
+    setMoveCount(moveCount => moveCount + 1);
+  }, [shownCount, gridItems]);
+
+
 
   const handleResetAndCreateGame = () => {
     // reset game
@@ -70,7 +111,20 @@ function App() {
   };
 
   const handleCardClick = (index: number) => {
-    
+    if (playing && index !== null && shownCount < 2) {
+      let temporaryGrid = [...gridItems];
+
+      if (temporaryGrid[index].permanentShown === false && temporaryGrid[index].shown === false) {
+        temporaryGrid[index].shown = true;
+
+        setShownCount(shownCount => shownCount + 1);
+      };
+
+      setGridItems(temporaryGrid);
+
+    };
+
+
   };
 
   
